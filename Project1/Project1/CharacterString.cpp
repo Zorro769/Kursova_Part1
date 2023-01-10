@@ -46,3 +46,24 @@ CharacterString::CharacterString(const CharacterString& obj)
 	for (i = 0; i < obj.maxLength; i++)
 		pStrStart[i] = obj.pStrStart[i];
 }
+
+CharacterString CharacterString::operator+(CharacterString const& obj)
+{
+	strcat_s(pStrStart, maxLength + obj.maxLength, obj.pStrStart);
+	return obj;
+}
+
+CharacterString CharacterString::operator-(CharacterString const& obj)
+{
+	CharacterString res(maxLength - obj.maxLength);
+	int j = 0;
+	for (int i = 0; i < maxLength; i++)
+	{
+		if (pStrStart[i] == obj.pStrStart[i])
+			j++;
+		else
+			res.pStrStart[i - j] = pStrStart[i];
+	}
+	return res;
+}
+

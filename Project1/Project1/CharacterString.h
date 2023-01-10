@@ -12,5 +12,7 @@ public:
 	int getLength();
 	void setLength(int value);
 	CharacterString(const CharacterString& obj);
+	CharacterString operator+(CharacterString const &obj);
+	CharacterString operator-(CharacterString const& obj);
 };
 
