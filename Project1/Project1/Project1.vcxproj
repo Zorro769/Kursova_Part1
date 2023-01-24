@@ -127,10 +127,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="BigIntValues.h" />
     <ClInclude Include="CharacterString.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BigIntValues.cpp" />
     <ClCompile Include="CharacterString.cpp" />
+    <ClCompile Include="MainFilecpp.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

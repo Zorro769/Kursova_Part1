@@ -18,9 +18,18 @@
     <ClInclude Include="CharacterString.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="BigIntValues.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CharacterString.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MainFilecpp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BigIntValues.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
