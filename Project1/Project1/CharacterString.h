@@ -3,11 +3,9 @@
 #include<fstream>
 class CharacterString
 {
-protected:
+public:
 	char* pStrStart;
 	int maxLength;
-
-public:
 	//CharacterString();
 	CharacterString();
 	CharacterString(int size);
@@ -17,7 +15,9 @@ public:
 	int getLength();
 	void setLength(int value);
 	CharacterString(const CharacterString& obj);
-	CharacterString operator+(CharacterString& obj1);
+	//virtual friend CharacterString operator+(CharacterString& const obj1);
+	virtual CharacterString operator+(const CharacterString& obj);
+	//virtual friend CharacterString operator+(const CharacterString& obj, const CharacterString& obj1);
 	CharacterString operator-(CharacterString const& obj);
 	CharacterString operator=(CharacterString const& other);
 	bool friend operator*(CharacterString const& obj, CharacterString const& obj1);

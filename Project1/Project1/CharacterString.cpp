@@ -55,25 +55,24 @@ CharacterString::CharacterString(const CharacterString& obj)
 	for (i = 0; i < obj.maxLength; i++)
 		pStrStart[i] = obj.pStrStart[i];
 }
-
-CharacterString CharacterString::operator+(CharacterString& obj)
+CharacterString CharacterString::operator+(const CharacterString& obj)
 {
-	//strcat(pStrStart, obj.pStrStart);
-	//obj.pStrStart = pStrStart;
-	//obj.setCharacter(pStrStart);
-	//obj.setLength(strlen(obj.pStrStart) + 1);
-	//obj.pStrStart[obj.maxLength] = '\0';
-	//return obj;
-	CharacterString temp;
+		CharacterString temp;
 	temp.setCharacter(pStrStart);
 	strcat(temp.pStrStart, obj.pStrStart);
-	//temp.setCharacter(pStrStart);
 	temp.setLength(strlen(temp.pStrStart) + 1);
 	temp.pStrStart[temp.maxLength] = '\0';
-	//temp.pStrStart = new char[strlen(pStrStart) + strlen(obj.pStrStart) + 2];
-	//temp.setCharacter(strcat_s(pStrStart, maxLength + obj.maxLength, obj.pStrStart));
 	return temp;
 }
+//CharacterString CharacterString::operator+(const CharacterString& obj)
+//{
+//	CharacterString temp;
+//	temp.setCharacter(CharacterString::pStrStart);
+//	strcat(temp.pStrStart, obj.pStrStart);
+//	temp.setLength(strlen(temp.pStrStart) + 1);
+//	temp.pStrStart[temp.maxLength] = '\0';
+//	return temp;
+//}
 
 CharacterString CharacterString::operator-(CharacterString const& obj)
 {

@@ -1,7 +1,7 @@
 #include<iostream>
 #include"CharacterString.h"
 #pragma once
-class BigIntValues:protected CharacterString
+class BigIntValues:public CharacterString
 {
 	//int degree;
 	//double baseOfNumber;
@@ -18,14 +18,15 @@ public:
 	friend std::istream& operator>>(std::istream& os, BigIntValues& so);
 
 	friend BigIntValues &operator+=(BigIntValues& a, const BigIntValues& b);
-	friend BigIntValues& operator+(const BigIntValues& a, const BigIntValues& b);
+	//BigIntValues& operator+(const BigIntValues& a);
+	BigIntValues& operator+(const BigIntValues& a);
 	friend BigIntValues& operator-=(BigIntValues& a, const BigIntValues& b);
 	friend BigIntValues operator-(const BigIntValues& a, const BigIntValues& b);
 
 	friend BigIntValues& operator*=(BigIntValues& a, const BigIntValues& b);
 	friend BigIntValues operator*(const BigIntValues& a, const BigIntValues& b);
-	friend BigIntValues &operator/=(BigIntValues&, const BigIntValues&);
-	friend BigIntValues operator/(const BigIntValues&, const BigIntValues&);
+	//friend BigIntValues &operator/=(BigIntValues&, const BigIntValues&);
+	//friend BigIntValues operator/(const BigIntValues&, const BigIntValues&);
 
 	friend bool operator<(const BigIntValues&, const BigIntValues&);
 	friend bool operator>(const BigIntValues&, const BigIntValues&);
