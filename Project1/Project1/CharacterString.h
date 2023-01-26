@@ -15,8 +15,9 @@ public:
 	int getLength();
 	void setLength(int value);
 	CharacterString(const CharacterString& obj);
+	//CharacterString& operator+=(const CharacterString& a);
 	//virtual friend CharacterString operator+(CharacterString& const obj1);
-	virtual CharacterString operator+(const CharacterString& obj);
+	virtual CharacterString& operator+(const CharacterString& obj);
 	//virtual friend CharacterString operator+(const CharacterString& obj, const CharacterString& obj1);
 	CharacterString operator-(CharacterString const& obj);
 	CharacterString operator=(CharacterString const& other);

@@ -12,9 +12,7 @@
 
 CharacterString::CharacterString()
 {
-	pStrStart = new char[1];
-	pStrStart[0] = '\0';
-	maxLength = 0;
+
 }
 CharacterString::CharacterString(int size)
 {
@@ -24,6 +22,7 @@ CharacterString::CharacterString(int size)
 CharacterString::~CharacterString()
 {
 	//delete[] pStrStart;
+	std::cout << "It's me" << '\n';
 }
 void CharacterString::setCharacter(const char* value)
 {
@@ -55,15 +54,24 @@ CharacterString::CharacterString(const CharacterString& obj)
 	for (i = 0; i < obj.maxLength; i++)
 		pStrStart[i] = obj.pStrStart[i];
 }
-CharacterString CharacterString::operator+(const CharacterString& obj)
+CharacterString& CharacterString::operator+(const CharacterString& obj)
 {
-		CharacterString temp;
+	CharacterString temp;
 	temp.setCharacter(pStrStart);
-	strcat(temp.pStrStart, obj.pStrStart);
+	strcat(pStrStart, obj.pStrStart);
 	temp.setLength(strlen(temp.pStrStart) + 1);
 	temp.pStrStart[temp.maxLength] = '\0';
 	return temp;
 }
+//CharacterString CharacterString::operator+(const CharacterString& obj)
+//{
+//		CharacterString temp;
+//	temp.setCharacter(pStrStart);
+//	strcat(temp.pStrStart, obj.pStrStart);
+//	temp.setLength(strlen(temp.pStrStart) + 1);
+//	temp.pStrStart[temp.maxLength] = '\0';
+//	return temp;
+//}
 //CharacterString CharacterString::operator+(const CharacterString& obj)
 //{
 //	CharacterString temp;
@@ -76,7 +84,7 @@ CharacterString CharacterString::operator+(const CharacterString& obj)
 
 CharacterString CharacterString::operator-(CharacterString const& obj)
 {
-	CharacterString res(strlen(pStrStart) - strlen(obj.pStrStart) - 4);
+	CharacterString res(strlen(pStrStart) - strlen(obj.pStrStart));
 	std::cout << strlen(pStrStart) - strlen(obj.pStrStart) << std::endl;
 	int j = 0, count = 0;
 	for (int i = 0; i < obj.maxLength + 1; i++)
@@ -95,13 +103,6 @@ CharacterString CharacterString::operator-(CharacterString const& obj)
 	j = 0;
 		for (int i = 0; i < strlen(pStrStart) + 1; i++)
 		{
-			//if ((pStrStart[i] == obj.pStrStart[j]) && (count == strlen(obj.pStrStart))) {
-			//	j++;
-			//	res.pStrStart[i] = pStrStart[i];
-			//}
-			//else
-			//	res.pStrStart[i - j] = pStrStart[i];
-			//std::cout << res.pStrStart[i] << std::endl;
 			if (pStrStart[i] != obj.pStrStart[j])
 			{
 				res.pStrStart[i - j] = pStrStart[i];
@@ -112,10 +113,8 @@ CharacterString CharacterString::operator-(CharacterString const& obj)
 				continue;
 			}
 		}
-		//for (int i = 0; i < strlen(res.pStrStart); i++)
-		//{
-		//	std::cout << res.pStrStart[i] << std::endl;
-		//}
+		res.pStrStart[strlen(pStrStart) - strlen(obj.pStrStart)] = '\0';
+		//strcpy(obj.pStrStart, res.pStrStart);
 		return res;
 }
 

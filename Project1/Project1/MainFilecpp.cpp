@@ -27,13 +27,13 @@ char* str2 = new char[256] {"123456789101112131415161718192021222324252627282930
 char* str3 = new char[256];
 //BigIntValues obj(str);
 //BigIntValues obj1(str2);
-//BigIntValues obj;
-//BigIntValues obj1;
-//BigIntValues obj3;
+//CharacterString obj;
+//CharacterString obj1;
+//CharacterString obj3;
 //std::cin >> obj;
 //std::cout << obj << '\n';
 //std::cin >> obj1;
-//std::cout << obj1 << '\n';
+////std::cout << obj1 << '\n';
 //obj3 = obj + obj1;
 //obj3 = obj - obj1;
 //obj3 = obj * obj1;
