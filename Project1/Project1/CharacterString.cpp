@@ -55,11 +55,11 @@ CharacterString::CharacterString(const CharacterString& obj)
 	for (i = 0; i < obj.maxLength; i++)
 		pStrStart[i] = obj.pStrStart[i];
 }
-CharacterString CharacterString::operator+(const CharacterString& obj)
+CharacterString CharacterString::operator+(CharacterString* obj)
 {
 		CharacterString temp;
 	temp.setCharacter(pStrStart);
-	strcat(temp.pStrStart, obj.pStrStart);
+	strcat(temp.pStrStart, obj->pStrStart);
 	temp.setLength(strlen(temp.pStrStart) + 1);
 	temp.pStrStart[temp.maxLength] = '\0';
 	return temp;

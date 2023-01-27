@@ -79,38 +79,77 @@ BigIntValues& BigIntValues::operator=(const BigIntValues& a)
 	pStrStart = a.pStrStart;
 	return *this;
 }
-BigIntValues& operator+=(BigIntValues& a, const BigIntValues& b) {
-	int t = 0, s=0, i,m,n;
-	if (strlen(a.pStrStart) == 0)
-		n = strlen(a.pStrStart) + 1;
+BigIntValues& BigIntValues::operator=(const CharacterString& a)
+{
+	pStrStart = a.pStrStart;
+	return *this;
+}
+//BigIntValues& operator+(BigIntValues& a, const BigIntValues& b) {
+//	int t = 0, s=0, i,m,n;
+//	if (strlen(a.pStrStart) == 0)
+//		n = strlen(a.pStrStart) + 1;
+//	else
+//		n = strlen(a.pStrStart);
+//	if (strlen(b.pStrStart) == 0)
+//		m = strlen(b.pStrStart) + 1;
+//	else
+//		m = strlen(b.pStrStart);
+//	if (m > n) {
+//		a.pStrStart = a.Append(a.pStrStart, m - n, '0');
+//	}
+//	if(strlen(a.pStrStart) == 0)
+//		n = strlen(a.pStrStart) + 1;
+//	else
+//		n = strlen(a.pStrStart);
+//	for (i = 0; i < n; i++) {
+//		int temp1 = a.pStrStart[i] - '0';
+//		int temp2 = b.pStrStart[i] - '0';
+//		if (i < m) {
+//			s = temp1 + temp2 + t;
+//		}
+//		else
+//			s = temp1 + t;
+//		t = s / 10;
+//		a.pStrStart[i] = (s % 10) + '0';
+//	}
+//	if (t) {
+//		a.pStrStart = a.Append(a.pStrStart,1,t + '0');
+//	}
+//	return a;
+//}
+CharacterString BigIntValues::operator+(CharacterString* a) {
+	int t = 0, s = 0, i, m, n;
+	if (strlen(pStrStart) == 0)
+		n = strlen(pStrStart) + 1;
 	else
-		n = strlen(a.pStrStart);
-	if (strlen(b.pStrStart) == 0)
-		m = strlen(b.pStrStart) + 1;
+		n = strlen(pStrStart);
+	if (strlen(a->pStrStart) == 0)
+		m = strlen(a->pStrStart) + 1;
 	else
-		m = strlen(b.pStrStart);
+		m = strlen(a->pStrStart);
 	if (m > n) {
-		a.pStrStart = a.Append(a.pStrStart, m - n, '0');
+		pStrStart = Append(pStrStart, m - n, '0');
 	}
-	if(strlen(a.pStrStart) == 0)
-		n = strlen(a.pStrStart) + 1;
+	if (strlen(pStrStart) == 0)
+		n = strlen(pStrStart) + 1;
 	else
-		n = strlen(a.pStrStart);
+		n = strlen(pStrStart);
 	for (i = 0; i < n; i++) {
-		int temp1 = a.pStrStart[i] - '0';
-		int temp2 = b.pStrStart[i] - '0';
+		int temp1 = pStrStart[i] - '0';
+		int temp2 = a->pStrStart[i] - '0';
 		if (i < m) {
 			s = temp1 + temp2 + t;
 		}
 		else
 			s = temp1 + t;
 		t = s / 10;
-		a.pStrStart[i] = (s % 10) + '0';
+		pStrStart[i] = (s % 10) + '0';
 	}
 	if (t) {
-		a.pStrStart = a.Append(a.pStrStart,1,t + '0');
+		pStrStart = Append(pStrStart, 1, t + '0');
 	}
-	return a;
+	a->pStrStart = pStrStart;
+	return *a;
 }
 //BigIntValues& operator+(const BigIntValues& a, const BigIntValues& b) {
 //	BigIntValues temp;
@@ -118,12 +157,12 @@ BigIntValues& operator+=(BigIntValues& a, const BigIntValues& b) {
 //	temp += b;
 //	return temp;
 //}
-BigIntValues& operator+(const BigIntValues& a){
-	BigIntValues temp;
-	temp = a;
-	temp += b;
-	return temp;
-}
+//BigIntValues& operator+(const BigIntValues& a){
+//	BigIntValues temp;
+//	temp = a;
+//	temp += b;
+//	return temp;
+//}
 BigIntValues::~BigIntValues()
 {
 	//delete[] pStrStart;	

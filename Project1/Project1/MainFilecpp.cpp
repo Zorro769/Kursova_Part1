@@ -10,9 +10,10 @@ int main()
 	std::cout << obj1;
 	CharacterString obj2;
 	CharacterString obj3;
+	CharacterString* obj4 = &obj1;
 	std::cin >> obj2;
 	std::cout << obj2;
-	obj3 = obj1 + obj2;
+	obj3 = obj2 + obj4;
 	std::cout << obj3;
 	//obj3 = obj1 - obj2;
 	//std::cout << obj3;
@@ -34,14 +35,16 @@ char* str3 = new char[256];
 //std::cout << obj << '\n';
 //std::cin >> obj1;
 //std::cout << obj1 << '\n';
-//obj3 = obj + obj1;
-//obj3 = obj - obj1;
-//obj3 = obj * obj1;
-//obj3 =  obj / obj1;
+////obj3 = obj + obj1;
+////obj3 = obj - obj1;
+////obj3 = obj * obj1;
+////obj3 =  obj / obj1;
+//CharacterString* obj_b = &obj1;
+//obj3 = obj + obj_b;
 //std::cout << obj3;
 
 //if (obj > obj1)
-//{
+//{	
 //	std::cout << "Obj is bigger" << std::endl;
 //}
 //else if (obj < obj1)

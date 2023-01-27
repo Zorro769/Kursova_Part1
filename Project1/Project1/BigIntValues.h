@@ -17,9 +17,10 @@ public:
 	friend std::ostream& operator<<(std::ostream& os, const BigIntValues& so);
 	friend std::istream& operator>>(std::istream& os, BigIntValues& so);
 
-	friend BigIntValues &operator+=(BigIntValues& a, const BigIntValues& b);
+	//friend BigIntValues &operator+(BigIntValues& a, const BigIntValues& b);
+	virtual CharacterString operator+(CharacterString* a) override;
 	//BigIntValues& operator+(const BigIntValues& a);
-	BigIntValues& operator+(const BigIntValues& a);
+	//BigIntValues& operator+(const BigIntValues& a);
 	friend BigIntValues& operator-=(BigIntValues& a, const BigIntValues& b);
 	friend BigIntValues operator-(const BigIntValues& a, const BigIntValues& b);
 
@@ -36,5 +37,6 @@ public:
 	friend bool operator==(const BigIntValues&, const BigIntValues&);
 
 	BigIntValues& operator=(const BigIntValues& a);
+	BigIntValues& operator=(const CharacterString& a);
 };
 
