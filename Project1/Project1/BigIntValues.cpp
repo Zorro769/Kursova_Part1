@@ -74,49 +74,50 @@ char* BigIntValues::Resize(char* array,size_t size)
 	return ret;
 }
 
-BigIntValues& BigIntValues::operator=(const BigIntValues& a)
-{
-	pStrStart = a.pStrStart;
-	return *this;
-}
+//BigIntValues& BigIntValues::operator=(const BigIntValues& a)
+//{
+//	pStrStart = a.pStrStart;
+//	return *this;
+//}
 BigIntValues& BigIntValues::operator=(const CharacterString& a)
 {
 	pStrStart = a.pStrStart;
 	return *this;
 }
-//BigIntValues& operator+(BigIntValues& a, const BigIntValues& b) {
-//	int t = 0, s=0, i,m,n;
-//	if (strlen(a.pStrStart) == 0)
-//		n = strlen(a.pStrStart) + 1;
-//	else
-//		n = strlen(a.pStrStart);
-//	if (strlen(b.pStrStart) == 0)
-//		m = strlen(b.pStrStart) + 1;
-//	else
-//		m = strlen(b.pStrStart);
-//	if (m > n) {
-//		a.pStrStart = a.Append(a.pStrStart, m - n, '0');
-//	}
-//	if(strlen(a.pStrStart) == 0)
-//		n = strlen(a.pStrStart) + 1;
-//	else
-//		n = strlen(a.pStrStart);
-//	for (i = 0; i < n; i++) {
-//		int temp1 = a.pStrStart[i] - '0';
-//		int temp2 = b.pStrStart[i] - '0';
-//		if (i < m) {
-//			s = temp1 + temp2 + t;
-//		}
-//		else
-//			s = temp1 + t;
-//		t = s / 10;
-//		a.pStrStart[i] = (s % 10) + '0';
-//	}
-//	if (t) {
-//		a.pStrStart = a.Append(a.pStrStart,1,t + '0');
-//	}
-//	return a;
-//}
+BigIntValues operator+=(BigIntValues& a, const BigIntValues& b)
+{
+	int t = 0, s = 0, i, m, n;
+	if (strlen(a.pStrStart) == 0)
+		n = strlen(a.pStrStart) + 1;
+	else
+		n = strlen(a.pStrStart);
+	if (strlen(b.pStrStart) == 0)
+		m = strlen(b.pStrStart) + 1;
+	else
+		m = strlen(b.pStrStart);
+	if (m > n) {
+		a.pStrStart = a.Append(a.pStrStart, m - n, '0');
+	}
+	if (strlen(a.pStrStart) == 0)
+		n = strlen(a.pStrStart) + 1;
+	else
+		n = strlen(a.pStrStart);
+	for (i = 0; i < n; i++) {
+		int temp1 = a.pStrStart[i] - '0';
+		int temp2 = b.pStrStart[i] - '0';
+		if (i < m) {
+			s = temp1 + temp2 + t;
+		}
+		else
+			s = temp1 + t;
+		t = s / 10;
+		a.pStrStart[i] = (s % 10) + '0';
+	}
+	if (t) {
+		a.pStrStart = a.Append(a.pStrStart, 1, t + '0');
+	}
+	return a;
+}
 CharacterString BigIntValues::operator+(CharacterString* a) {
 	int t = 0, s = 0, i, m, n;
 	if (strlen(pStrStart) == 0)
@@ -151,18 +152,12 @@ CharacterString BigIntValues::operator+(CharacterString* a) {
 	a->pStrStart = pStrStart;
 	return *a;
 }
-//BigIntValues& operator+(const BigIntValues& a, const BigIntValues& b) {
-//	BigIntValues temp;
-//	temp = a;
-//	temp += b;
-//	return temp;
-//}
-//BigIntValues& operator+(const BigIntValues& a){
-//	BigIntValues temp;
-//	temp = a;
-//	temp += b;
-//	return temp;
-//}
+BigIntValues operator+(const BigIntValues& a, const BigIntValues& b) {
+	BigIntValues temp;
+	temp = a;
+	temp += b;
+	return temp;
+}
 BigIntValues::~BigIntValues()
 {
 	//delete[] pStrStart;	
@@ -170,7 +165,7 @@ BigIntValues::~BigIntValues()
 bool operator<(const BigIntValues& a, const BigIntValues& b) {
 	int n = strlen(a.pStrStart), m = strlen(b.pStrStart);
 	if (n != m)
-		return n < m;
+		return n < m; 
 	while (n--)
 		if (a.pStrStart[n] != b.pStrStart[n])
 			return a.pStrStart[n] < b.pStrStart[n];
@@ -178,13 +173,14 @@ bool operator<(const BigIntValues& a, const BigIntValues& b) {
 }
 bool operator>(const BigIntValues& a, const BigIntValues& b)
 {
-	int n = strlen(a.pStrStart), m = strlen(b.pStrStart);
-	if (n != m)
-		return n > m;
-	while (n--)
-		if (a.pStrStart[n] != b.pStrStart[n])
-			return a.pStrStart[n] > b.pStrStart[n];
-	return false;
+	//int n = strlen(a.pStrStart), m = strlen(b.pStrStart);
+	//if (n != m)
+	//	return n > m;
+	//while (n--)
+	//	if (a.pStrStart[n] != b.pStrStart[n])
+	//		return a.pStrStart[n] > b.pStrStart[n];
+	//return false;
+	return b < a;
 }
 bool operator<=(const BigIntValues&, const BigIntValues&)
 {
@@ -238,7 +234,7 @@ BigIntValues operator-(const BigIntValues& a, const BigIntValues& b) {
 	temp -= b;
 	return temp;
 }
-BigIntValues& operator*=(BigIntValues& a, const BigIntValues& b)
+BigIntValues operator*=(BigIntValues& a, const BigIntValues& b)
 {
 	if (Null(a) || Null(b)) {
 		a = BigIntValues();
@@ -253,7 +249,6 @@ BigIntValues& operator*=(BigIntValues& a, const BigIntValues& b)
 		m = strlen(b.pStrStart) + 1;
 	else
 		m = strlen(b.pStrStart);
-	//vector<int> v(n + m, 0);
 	int* array = new int[n + m]{ 0 };
 	for (int i = 0; i < n; i++) {
 		int temp1 = a.pStrStart[i] - '0';
@@ -263,10 +258,6 @@ BigIntValues& operator*=(BigIntValues& a, const BigIntValues& b)
 		}
 	}
 	size = n + m;
-	//for (int i = 0; i < 200; i++)
-	//{
-	//	std::cout << array[i]<< std::endl;
-	//}
 	n += m;
 	a.pStrStart = a.Resize(a.pStrStart, size);
 	for (int s, i = 0, t = 0; i < n; i++)
@@ -287,59 +278,59 @@ BigIntValues operator*(const BigIntValues& a, const BigIntValues& b) {
 	temp *= b;
 	return temp;
 }
-//BigIntValues& operator/=(BigIntValues& a, const BigIntValues& b)
-//{
-//	if (Null(b))
-//		throw("Arithmetic Error: Division By 0");
-//	if (a < b) {
-//		a.pStrStart = new char[2];
-//		a.pStrStart[0] = '0';
-//		a.pStrStart[1] = '\0';
-//		return a;
-//	}
-//	bool flag = a == b;
-//	if (a == b) {
-//		a.pStrStart = new char[2];
-//		a.pStrStart[0] = '1';
-//		a.pStrStart[1] = '\0';
-//		return a;
-//	}
-//	int lgcat = 0, cc,n,m;
-//	if (strlen(a.pStrStart) == 0)
-//		n = strlen(a.pStrStart) + 1;
-//	else
-//		n = strlen(a.pStrStart);
-//	if (strlen(b.pStrStart) == 0)
-//		m = strlen(b.pStrStart) + 1;
-//	else
-//		m = strlen(b.pStrStart);
-//	int i = 0;
-//	int* array = new int[n] { 0 };
-//	BigIntValues t;
-//	for (i = n - 1; t * 10 + (a.pStrStart[i] - '0') < b; i--) {
-//		t *= 10;
-//		t += (a.pStrStart[i] - '0');
-//	}
-//	for (; i >= 0; i--) {
-//		t = t * 10 + (a.pStrStart[i] - '0');
-//		for (cc = 9; cc * b > t; cc--);
-//		t -= cc * b;
-//		array[lgcat++] = cc;
-//
-//	}
-//	a.pStrStart = a.Resize(a.pStrStart,n);
-//	for (i = 0; i < lgcat; i++)
-//		a.pStrStart[i] = (array[lgcat - i - 1] + '0');
-//	a.pStrStart = a.Resize(a.pStrStart,lgcat);
-//	return a;
-//}
-//BigIntValues operator/(const BigIntValues& a, const BigIntValues& b)
-//{
-//	BigIntValues temp;
-//	temp = a;
-//	temp /= b;
-//	return temp;
-//}
+BigIntValues operator/=(BigIntValues& a, const BigIntValues& b)
+{
+	if (Null(b))
+		throw("Arithmetic Error: Division By 0");
+	if (a < b) {
+		a.pStrStart = new char[2];
+		a.pStrStart[0] = '0';
+		a.pStrStart[1] = '\0';
+		return a;
+	}
+	bool flag = a == b;
+	if (a == b) {
+		a.pStrStart = new char[2];
+		a.pStrStart[0] = '1';
+		a.pStrStart[1] = '\0';
+		return a;
+	}
+	int lgcat = 0, cc,n,m;
+	if (strlen(a.pStrStart) == 0)
+		n = strlen(a.pStrStart) + 1;
+	else
+		n = strlen(a.pStrStart);
+	if (strlen(b.pStrStart) == 0)
+		m = strlen(b.pStrStart) + 1;
+	else
+		m = strlen(b.pStrStart);
+	int i = 0;
+	int* array = new int[n] { 0 };
+	BigIntValues t;
+	for (i = n - 1; (t * 10) + (a.pStrStart[i] - '0') < b; i--) {
+		t *= 10;
+		t += (a.pStrStart[i] - '0');
+	}
+	for (; i >= 0; i--) {
+		t = t * 10 + (a.pStrStart[i] - '0');
+		for (cc = 9; cc * b > t; cc--);
+		t -= cc * b;
+		array[lgcat++] = cc;
+
+	}
+	a.pStrStart = a.Resize(a.pStrStart,n);
+	for (i = 0; i < lgcat; i++)
+		a.pStrStart[i] = (array[lgcat - i - 1] + '0');
+	a.pStrStart = a.Resize(a.pStrStart,lgcat);
+	return a;
+}
+BigIntValues operator/(const BigIntValues& a, const BigIntValues& b)
+{
+	BigIntValues temp;
+	temp = a;
+	temp /= b;
+	return temp;
+}
 bool Null(const BigIntValues&	a)
 {
 	if (a.pStrStart[0] == 0)
@@ -374,4 +365,6 @@ std::istream& operator>>(std::istream& os, BigIntValues& so)
 	so.pStrStart[length] = '\0';
 	return os;
 }
+
+
 

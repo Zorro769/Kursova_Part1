@@ -18,7 +18,7 @@ public:
 	//virtual friend CharacterString operator+(CharacterString& const obj1);
 	virtual CharacterString operator+(CharacterString* obj);
 	//virtual friend CharacterString operator+(const CharacterString& obj, const CharacterString& obj1);
-	CharacterString operator-(CharacterString const& obj);
+	CharacterString& operator-(CharacterString& obj);
 	CharacterString operator=(CharacterString const& other);
 	bool friend operator*(CharacterString const& obj, CharacterString const& obj1);
 	friend std::ostream& operator<<(std::ostream& os, const CharacterString& so);

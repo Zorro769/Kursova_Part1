@@ -74,10 +74,11 @@ CharacterString CharacterString::operator+(CharacterString* obj)
 //	return temp;
 //}
 
-CharacterString CharacterString::operator-(CharacterString const& obj)
+CharacterString& CharacterString::operator-(CharacterString& obj)
 {
+	int length = strlen(pStrStart) - strlen(obj.pStrStart);
 	CharacterString res(strlen(pStrStart) - strlen(obj.pStrStart) - 4);
-	std::cout << strlen(pStrStart) - strlen(obj.pStrStart) << std::endl;
+	char* array = new char[length];
 	int j = 0, count = 0;
 	for (int i = 0; i < obj.maxLength + 1; i++)
 	{
@@ -86,37 +87,30 @@ CharacterString CharacterString::operator-(CharacterString const& obj)
 			count++;
 		}
 	}
-	if (count != strlen(obj.pStrStart))
-	{
-		res.setCharacter(obj.pStrStart);
-		res.setLength(obj.maxLength);
-		return res;
-	}
 	j = 0;
 		for (int i = 0; i < strlen(pStrStart) + 1; i++)
 		{
-			//if ((pStrStart[i] == obj.pStrStart[j]) && (count == strlen(obj.pStrStart))) {
-			//	j++;
-			//	res.pStrStart[i] = pStrStart[i];
-			//}
-			//else
-			//	res.pStrStart[i - j] = pStrStart[i];
-			//std::cout << res.pStrStart[i] << std::endl;
-			if (pStrStart[i] != obj.pStrStart[j])
+			if (count == strlen(obj.pStrStart))
 			{
-				res.pStrStart[i - j] = pStrStart[i];
+				if (pStrStart[i] != obj.pStrStart[j])
+				{
+					array[i - j] = pStrStart[i];
+				}
+				else
+				{
+					j++;
+					continue;
+				}
 			}
-			else
-			{
-				j++;
-				continue;
+			else {
+				obj.pStrStart = pStrStart;
+				return obj;
 			}
+
 		}
-		//for (int i = 0; i < strlen(res.pStrStart); i++)
-		//{
-		//	std::cout << res.pStrStart[i] << std::endl;
-		//}
-		return res;
+		obj.pStrStart = array;
+		obj.pStrStart[length] = '\0';
+		return obj;
 }
 
 CharacterString CharacterString::operator=(CharacterString const& other)

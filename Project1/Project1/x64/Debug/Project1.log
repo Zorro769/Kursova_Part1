@@ -1,2 +1,6 @@
-﻿  MainFilecpp.cpp
+﻿  CharacterString.cpp
+D:\Forestry\CourseWork\C++\Kursova_Part1\Project1\Project1\CharacterString.cpp(63,43): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+D:\Forestry\CourseWork\C++\Kursova_Part1\Project1\Project1\CharacterString.cpp(79,56): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+D:\Forestry\CourseWork\C++\Kursova_Part1\Project1\Project1\CharacterString.cpp(80,67): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+D:\Forestry\CourseWork\C++\Kursova_Part1\Project1\Project1\CharacterString.cpp(122): warning C4715: 'CharacterString::operator=': not all control paths return a value
   Project1.vcxproj -> D:\Forestry\CourseWork\C++\Kursova_Part1\Project1\x64\Debug\Project1.exe
