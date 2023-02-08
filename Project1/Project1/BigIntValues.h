@@ -3,10 +3,7 @@
 #pragma once
 class BigIntValues:public CharacterString
 {
-	//int degree;
-	//double baseOfNumber;
 public:
-	BigIntValues(char* value);
 	BigIntValues(unsigned long long nr = 0);
 	~BigIntValues();
 	char* Append(char* array, size_t n, char a);
@@ -34,8 +31,10 @@ public:
 	friend bool operator>=(const BigIntValues&, const BigIntValues&);
 
 	friend bool operator==(const BigIntValues&, const BigIntValues&);
+	friend bool operator!=(const BigIntValues&, const BigIntValues&);
+	
 
-	//BigIntValues& operator=(const BigIntValues& a);
+	BigIntValues& operator=(const BigIntValues& a);
 	BigIntValues& operator=(const CharacterString& a);
 };
 

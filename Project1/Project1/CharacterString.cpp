@@ -3,12 +3,6 @@
 #include<iostream>
 #include<fstream>
 #pragma warning(disable : 4996)
-//CharacterString::CharacterString()
-//{
-//	setCharacter("Uknown");
-//	setLength(0);
-//}
-//CharacterString::CharacterString() {}
 
 CharacterString::CharacterString()
 {
@@ -33,7 +27,6 @@ void CharacterString::setCharacter(const char* value)
 char* CharacterString::getCharacter()
 {
 	return pStrStart;
-		
 }
 void CharacterString::setLength(int value)
 {
@@ -64,16 +57,15 @@ CharacterString CharacterString::operator+(CharacterString* obj)
 	temp.pStrStart[temp.maxLength] = '\0';
 	return temp;
 }
-//CharacterString CharacterString::operator+(const CharacterString& obj)
-//{
-//	CharacterString temp;
-//	temp.setCharacter(CharacterString::pStrStart);
-//	strcat(temp.pStrStart, obj.pStrStart);
-//	temp.setLength(strlen(temp.pStrStart) + 1);
-//	temp.pStrStart[temp.maxLength] = '\0';
-//	return temp;
-//}
-
+CharacterString CharacterString::operator+(CharacterString& obj)
+{
+	CharacterString temp;
+	temp.setCharacter(pStrStart);
+	strcat(temp.pStrStart, obj.pStrStart);
+	temp.setLength(strlen(temp.pStrStart) + 1);
+	temp.pStrStart[temp.maxLength] = '\0';
+	return temp;
+}
 CharacterString& CharacterString::operator-(CharacterString& obj)
 {
 	int length = strlen(pStrStart) - strlen(obj.pStrStart);
@@ -160,7 +152,6 @@ std::istream& operator>>(std::istream& os, CharacterString& so)
 	os >> so.maxLength;
 	std::cout << "Enter line: " << std::endl;
 	os.ignore();
-	so.pStrStart = new char[so.maxLength];
 	os.getline(so.pStrStart, so.maxLength);
 	return os;
 }

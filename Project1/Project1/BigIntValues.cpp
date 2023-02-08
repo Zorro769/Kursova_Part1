@@ -2,23 +2,15 @@
 using std::cout;
 #pragma warning(disable : 4996)
 
-BigIntValues::BigIntValues(char* s) {
-	pStrStart = new char[strlen(s)];
-	pStrStart[strlen(s)] = '\0';
-	for (int i = strlen(s) - 1,j = 0; i >= 0; i--,j++)
-	{
-		if (!isdigit(s[i]))
-			throw("ERROR");
-		pStrStart[j] = s[i];
-	}
-	maxLength = NULL;
-}
+
 BigIntValues::BigIntValues(unsigned long long nr) {
-	//pStrStart = new(std::nothrow) char[maxLength];
 	do {
 		pStrStart = Append(pStrStart,1,((nr % 10) + '0'));
 		nr /= 10;
 	} while (nr);
+}
+BigIntValues::~BigIntValues()
+{
 }
 char* BigIntValues::Append(char* array,size_t n ,char a)
 {
@@ -73,16 +65,39 @@ char* BigIntValues::Resize(char* array,size_t size)
 	ret[size] = '\0';
 	return ret;
 }
-
-//BigIntValues& BigIntValues::operator=(const BigIntValues& a)
-//{
-//	pStrStart = a.pStrStart;
-//	return *this;
-//}
-BigIntValues& BigIntValues::operator=(const CharacterString& a)
-{
-	pStrStart = a.pStrStart;
-	return *this;
+CharacterString BigIntValues::operator+(CharacterString* a) {
+	int t = 0, s = 0, i, m, n;
+	if (strlen(pStrStart) == 0)
+		n = strlen(pStrStart) + 1;
+	else
+		n = strlen(pStrStart);
+	if (strlen(a->pStrStart) == 0)
+		m = strlen(a->pStrStart) + 1;
+	else
+		m = strlen(a->pStrStart);
+	if (m > n) {
+		pStrStart = Append(pStrStart, m - n, '0');
+	}
+	if (strlen(pStrStart) == 0)
+		n = strlen(pStrStart) + 1;
+	else
+		n = strlen(pStrStart);
+	for (i = 0; i < n; i++) {
+		int temp1 = pStrStart[i] - '0';
+		int temp2 = a->pStrStart[i] - '0';
+		if (i < m) {
+			s = temp1 + temp2 + t;
+		}
+		else
+			s = temp1 + t;
+		t = s / 10;
+		pStrStart[i] = (s % 10) + '0';
+	}
+	if (t) {
+		pStrStart = Append(pStrStart, 1, t + '0');
+	}
+	a->pStrStart = pStrStart;
+	return *a;
 }
 BigIntValues operator+=(BigIntValues& a, const BigIntValues& b)
 {
@@ -118,83 +133,14 @@ BigIntValues operator+=(BigIntValues& a, const BigIntValues& b)
 	}
 	return a;
 }
-CharacterString BigIntValues::operator+(CharacterString* a) {
-	int t = 0, s = 0, i, m, n;
-	if (strlen(pStrStart) == 0)
-		n = strlen(pStrStart) + 1;
-	else
-		n = strlen(pStrStart);
-	if (strlen(a->pStrStart) == 0)
-		m = strlen(a->pStrStart) + 1;
-	else
-		m = strlen(a->pStrStart);
-	if (m > n) {
-		pStrStart = Append(pStrStart, m - n, '0');
-	}
-	if (strlen(pStrStart) == 0)
-		n = strlen(pStrStart) + 1;
-	else
-		n = strlen(pStrStart);
-	for (i = 0; i < n; i++) {
-		int temp1 = pStrStart[i] - '0';
-		int temp2 = a->pStrStart[i] - '0';
-		if (i < m) {
-			s = temp1 + temp2 + t;
-		}
-		else
-			s = temp1 + t;
-		t = s / 10;
-		pStrStart[i] = (s % 10) + '0';
-	}
-	if (t) {
-		pStrStart = Append(pStrStart, 1, t + '0');
-	}
-	a->pStrStart = pStrStart;
-	return *a;
-}
+
 BigIntValues operator+(const BigIntValues& a, const BigIntValues& b) {
 	BigIntValues temp;
 	temp = a;
 	temp += b;
 	return temp;
 }
-BigIntValues::~BigIntValues()
-{
-	//delete[] pStrStart;	
-}
-bool operator<(const BigIntValues& a, const BigIntValues& b) {
-	int n = strlen(a.pStrStart), m = strlen(b.pStrStart);
-	if (n != m)
-		return n < m; 
-	while (n--)
-		if (a.pStrStart[n] != b.pStrStart[n])
-			return a.pStrStart[n] < b.pStrStart[n];
-	return false;
-}
-bool operator>(const BigIntValues& a, const BigIntValues& b)
-{
-	//int n = strlen(a.pStrStart), m = strlen(b.pStrStart);
-	//if (n != m)
-	//	return n > m;
-	//while (n--)
-	//	if (a.pStrStart[n] != b.pStrStart[n])
-	//		return a.pStrStart[n] > b.pStrStart[n];
-	//return false;
-	return b < a;
-}
-bool operator<=(const BigIntValues&, const BigIntValues&)
-{
-	return false;
-}
-bool operator>=(const BigIntValues&, const BigIntValues&)
-{
-	return false;
-}
-bool operator==(const BigIntValues& a, const BigIntValues& b) {
-	if (strcmp(a.pStrStart, b.pStrStart) == 0)
-		return true;
-	return false;
-}
+
 BigIntValues& operator-=(BigIntValues& a, const BigIntValues& b) {
 	if (a < b)
 		throw("UNDERFLOW");
@@ -288,7 +234,6 @@ BigIntValues operator/=(BigIntValues& a, const BigIntValues& b)
 		a.pStrStart[1] = '\0';
 		return a;
 	}
-	bool flag = a == b;
 	if (a == b) {
 		a.pStrStart = new char[2];
 		a.pStrStart[0] = '1';
@@ -307,10 +252,11 @@ BigIntValues operator/=(BigIntValues& a, const BigIntValues& b)
 	int i = 0;
 	int* array = new int[n] { 0 };
 	BigIntValues t;
-	for (i = n - 1; (t * 10) + (a.pStrStart[i] - '0') < b; i--) {
+	for (i = n - 1; t * 10 + (a.pStrStart[i] - '0') < b; i--) {
 		t *= 10;
 		t += (a.pStrStart[i] - '0');
 	}
+	
 	for (; i >= 0; i--) {
 		t = t * 10 + (a.pStrStart[i] - '0');
 		for (cc = 9; cc * b > t; cc--);
@@ -331,13 +277,52 @@ BigIntValues operator/(const BigIntValues& a, const BigIntValues& b)
 	temp /= b;
 	return temp;
 }
-bool Null(const BigIntValues&	a)
+bool Null(const BigIntValues& a)
 {
 	if (a.pStrStart[0] == 0)
 		return true;
 	return false;
 }
-
+BigIntValues& BigIntValues::operator=(const CharacterString& a)
+{
+	pStrStart = a.pStrStart;
+	return *this;
+}
+BigIntValues& BigIntValues::operator=(const BigIntValues& a)
+{
+	pStrStart = a.pStrStart;
+	return *this;
+}
+bool operator==(const BigIntValues& a, const BigIntValues& b) {
+	if (strcmp(a.pStrStart, b.pStrStart) == 0)
+		return true;
+	return false;
+}
+bool operator!=(const BigIntValues& a, const BigIntValues& b)
+{
+	return !(a == b);
+}
+bool operator<(const BigIntValues& a, const BigIntValues& b) {
+	int n = strlen(a.pStrStart), m = strlen(b.pStrStart);
+	if (n != m)
+		return n < m;
+	while (n--)
+		if (a.pStrStart[n] != b.pStrStart[n])
+			return a.pStrStart[n] < b.pStrStart[n];
+	return false;
+}
+bool operator>(const BigIntValues& a, const BigIntValues& b)
+{
+	return b < a;
+}
+bool operator<=(const BigIntValues& a, const BigIntValues& b)
+{
+	return !(a > b);
+}
+bool operator>=(const BigIntValues& a, const BigIntValues& b)
+{
+	return !(a < b);
+}
 std::ostream& operator<<(std::ostream& os, const BigIntValues& so)
 {
 	for (int i = strlen(so.pStrStart) - 1; i >= 0; i--) {
@@ -351,20 +336,18 @@ std::istream& operator>>(std::istream& os, BigIntValues& so)
 	std::cout << "Enter the max length of string" << '\n';
 	os >> so.maxLength;
 	char* str = new char[so.maxLength];
+	char* temp = new char[so.maxLength];
 	std::cout << "Enter the string " << '\n';
 	os.ignore();
 	os.getline(str, so.maxLength);
 	int length = strlen(str);
-	//so.pStrStart = new char[length];
 	for (int i = length- 1; i >= 0; i--) {
 		if (!isdigit(str[i])) {
 			throw("NOT INT NUMBER");
 		}
-		so.pStrStart[length - i - 1] = str[i];
+		temp[length - i - 1] = str[i];
 	}
-	so.pStrStart[length] = '\0';
+	temp[length] = '\0';
+	so.setCharacter(temp);
 	return os;
 }
-
-
-
