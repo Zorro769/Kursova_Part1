@@ -1,24 +1,12 @@
 ﻿  BigIntValues.cpp
-D:\Forestry\CourseWork\C++\Kursova_Part1\Project1\Project1\BigIntValues.cpp(87,24): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-D:\Forestry\CourseWork\C++\Kursova_Part1\Project1\Project1\BigIntValues.cpp(91,32): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-D:\Forestry\CourseWork\C++\Kursova_Part1\Project1\Project1\BigIntValues.cpp(134,23): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-D:\Forestry\CourseWork\C++\Kursova_Part1\Project1\Project1\BigIntValues.cpp(164,24): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-D:\Forestry\CourseWork\C++\Kursova_Part1\Project1\Project1\BigIntValues.cpp(169,32): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-D:\Forestry\CourseWork\C++\Kursova_Part1\Project1\Project1\BigIntValues.cpp(208,26): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-D:\Forestry\CourseWork\C++\Kursova_Part1\Project1\Project1\BigIntValues.cpp(212,26): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-D:\Forestry\CourseWork\C++\Kursova_Part1\Project1\Project1\BigIntValues.cpp(257,25): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-D:\Forestry\CourseWork\C++\Kursova_Part1\Project1\Project1\BigIntValues.cpp(329,26): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-D:\Forestry\CourseWork\C++\Kursova_Part1\Project1\Project1\BigIntValues.cpp(334,26): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-D:\Forestry\CourseWork\C++\Kursova_Part1\Project1\Project1\BigIntValues.cpp(383,26): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-D:\Forestry\CourseWork\C++\Kursova_Part1\Project1\Project1\BigIntValues.cpp(387,26): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-D:\Forestry\CourseWork\C++\Kursova_Part1\Project1\Project1\BigIntValues.cpp(458,26): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-D:\Forestry\CourseWork\C++\Kursova_Part1\Project1\Project1\BigIntValues.cpp(462,26): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-D:\Forestry\CourseWork\C++\Kursova_Part1\Project1\Project1\BigIntValues.cpp(529,27): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-D:\Forestry\CourseWork\C++\Kursova_Part1\Project1\Project1\BigIntValues.cpp(529,58): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-D:\Forestry\CourseWork\C++\Kursova_Part1\Project1\Project1\BigIntValues.cpp(566,29): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-D:\Forestry\CourseWork\C++\Kursova_Part1\Project1\Project1\BigIntValues.cpp(566,54): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-D:\Forestry\CourseWork\C++\Kursova_Part1\Project1\Project1\BigIntValues.cpp(598,2): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-D:\Forestry\CourseWork\C++\Kursova_Part1\Project1\Project1\BigIntValues.cpp(639,26): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-D:\Forestry\CourseWork\C++\Kursova_Part1\Project1\Project1\BigIntValues.cpp(647,33): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-D:\Forestry\CourseWork\C++\Kursova_Part1\Project1\Project1\BigIntValues.cpp(648,25): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+D:\Forestry\CourseWork\C++\Kursova_Part1\Project1\Project1\BigIntValues.cpp(21,27): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+D:\Forestry\CourseWork\C++\Kursova_Part1\Project1\Project1\BigIntValues.cpp(33,38): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+D:\Forestry\CourseWork\C++\Kursova_Part1\Project1\Project1\BigIntValues.cpp(34,30): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+D:\Forestry\CourseWork\C++\Kursova_Part1\Project1\Project1\BigIntValues.cpp(66,30): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+D:\Forestry\CourseWork\C++\Kursova_Part1\Project1\Project1\BigIntValues.cpp(110,25): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+D:\Forestry\CourseWork\C++\Kursova_Part1\Project1\Project1\BigIntValues.cpp(114,33): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+D:\Forestry\CourseWork\C++\Kursova_Part1\Project1\Project1\BigIntValues.cpp(157,24): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+D:\Forestry\CourseWork\C++\Kursova_Part1\Project1\Project1\BigIntValues.cpp(187,25): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+D:\Forestry\CourseWork\C++\Kursova_Part1\Project1\Project1\BigIntValues.cpp(192,33): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+D:\Forestry\CourseWork\C++\Kursova_Part1\Project1\Project1\BigIntValues.cpp(615,3): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
   Project1.vcxproj -> D:\Forestry\CourseWork\C++\Kursova_Part1\Project1\x64\Debug\Project1.exe

@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DEFECTS>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>D:\Forestry\CourseWork\C++\Kursova_Part1\Project1\Project1\</FILEPATH>
+      <FILENAME>BigIntValues.cpp</FILENAME>
+      <LINE>32</LINE>
+      <COLUMN>33</COLUMN>
+    </SFA>
+    <DEFECTCODE>26451</DEFECTCODE>
+    <DESCRIPTION>Arithmetic overflow: Using operator '+' on a 4 byte value and then casting the result to a 8 byte value. Cast the value to the wider type before calling operator '+' to avoid overflow (io.2).</DESCRIPTION>
+    <FUNCTION>BigIntValues::setCharacter</FUNCTION>
+    <DECORATED>?setCharacter@BigIntValues@@QEAAXPEAD@Z</DECORATED>
+    <FUNCLINE>28</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>D:\Forestry\CourseWork\C++\Kursova_Part1\Project1\Project1\</FILEPATH>
+      <FILENAME>BigIntValues.cpp</FILENAME>
+      <LINE>104</LINE>
+      <COLUMN>35</COLUMN>
+    </SFA>
+    <DEFECTCODE>26451</DEFECTCODE>
+    <DESCRIPTION>Arithmetic overflow: Using operator '-' on a 4 byte value and then casting the result to a 8 byte value. Cast the value to the wider type before calling operator '-' to avoid overflow (io.2).</DESCRIPTION>
+    <FUNCTION>BigIntValues::+</FUNCTION>
+    <DECORATED>??HBigIntValues@@UEAA?AVCharacterString@@PEAV1@@Z</DECORATED>
+    <FUNCLINE>53</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>D:\Forestry\CourseWork\C++\Kursova_Part1\Project1\Project1\</FILEPATH>
+      <FILENAME>BigIntValues.cpp</FILENAME>
+      <LINE>240</LINE>
+      <COLUMN>30</COLUMN>
+    </SFA>
+    <DEFECTCODE>26451</DEFECTCODE>
+    <DESCRIPTION>Arithmetic overflow: Using operator '-' on a 4 byte value and then casting the result to a 8 byte value. Cast the value to the wider type before calling operator '-' to avoid overflow (io.2).</DESCRIPTION>
+    <FUNCTION>+=</FUNCTION>
+    <DECORATED>??Y@YA?AVBigIntValues@@AEAV0@AEBV0@@Z</DECORATED>
+    <FUNCLINE>188</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>D:\Forestry\CourseWork\C++\Kursova_Part1\Project1\Project1\</FILEPATH>
+      <FILENAME>BigIntValues.cpp</FILENAME>
+      <LINE>396</LINE>
+      <COLUMN>25</COLUMN>
+    </SFA>
+    <DEFECTCODE>26451</DEFECTCODE>
+    <DESCRIPTION>Arithmetic overflow: Using operator '+' on a 4 byte value and then casting the result to a 8 byte value. Cast the value to the wider type before calling operator '+' to avoid overflow (io.2).</DESCRIPTION>
+    <FUNCTION>*=</FUNCTION>
+    <DECORATED>??X@YA?AVBigIntValues@@AEAV0@AEBV0@@Z</DECORATED>
+    <FUNCLINE>356</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>D:\Forestry\CourseWork\C++\Kursova_Part1\Project1\Project1\</FILEPATH>
+      <FILENAME>BigIntValues.cpp</FILENAME>
+      <LINE>396</LINE>
+      <COLUMN>25</COLUMN>
+    </SFA>
+    <DEFECTCODE>26451</DEFECTCODE>
+    <DESCRIPTION>Arithmetic overflow: Using operator '+' on a 4 byte value and then casting the result to a 8 byte value. Cast the value to the wider type before calling operator '+' to avoid overflow (io.2).</DESCRIPTION>
+    <FUNCTION>*=</FUNCTION>
+    <DECORATED>??X@YA?AVBigIntValues@@AEAV0@AEBV0@@Z</DECORATED>
+    <FUNCLINE>356</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>D:\Forestry\CourseWork\C++\Kursova_Part1\Project1\Project1\</FILEPATH>
+      <FILENAME>BigIntValues.cpp</FILENAME>
+      <LINE>406</LINE>
+      <COLUMN>29</COLUMN>
+    </SFA>
+    <DEFECTCODE>26451</DEFECTCODE>
+    <DESCRIPTION>Arithmetic overflow: Using operator '+' on a 4 byte value and then casting the result to a 8 byte value. Cast the value to the wider type before calling operator '+' to avoid overflow (io.2).</DESCRIPTION>
+    <FUNCTION>*=</FUNCTION>
+    <DECORATED>??X@YA?AVBigIntValues@@AEAV0@AEBV0@@Z</DECORATED>
+    <FUNCLINE>356</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>D:\Forestry\CourseWork\C++\Kursova_Part1\Project1\Project1\</FILEPATH>
+      <FILENAME>BigIntValues.cpp</FILENAME>
+      <LINE>406</LINE>
+      <COLUMN>29</COLUMN>
+    </SFA>
+    <DEFECTCODE>26451</DEFECTCODE>
+    <DESCRIPTION>Arithmetic overflow: Using operator '+' on a 4 byte value and then casting the result to a 8 byte value. Cast the value to the wider type before calling operator '+' to avoid overflow (io.2).</DESCRIPTION>
+    <FUNCTION>*=</FUNCTION>
+    <DECORATED>??X@YA?AVBigIntValues@@AEAV0@AEBV0@@Z</DECORATED>
+    <FUNCLINE>356</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>D:\Forestry\CourseWork\C++\Kursova_Part1\Project1\Project1\</FILEPATH>
+      <FILENAME>BigIntValues.cpp</FILENAME>
+      <LINE>478</LINE>
+      <COLUMN>44</COLUMN>
+    </SFA>
+    <DEFECTCODE>26451</DEFECTCODE>
+    <DESCRIPTION>Arithmetic overflow: Using operator '-' on a 4 byte value and then casting the result to a 8 byte value. Cast the value to the wider type before calling operator '-' to avoid overflow (io.2).</DESCRIPTION>
+    <FUNCTION>/=</FUNCTION>
+    <DECORATED>??_0@YA?AVBigIntValues@@AEAV0@AEBV0@@Z</DECORATED>
+    <FUNCLINE>427</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>D:\Forestry\CourseWork\C++\Kursova_Part1\Project1\Project1\</FILEPATH>
+      <FILENAME>BigIntValues.cpp</FILENAME>
+      <LINE>480</LINE>
+      <COLUMN>25</COLUMN>
+    </SFA>
+    <DEFECTCODE>26451</DEFECTCODE>
+    <DESCRIPTION>Arithmetic overflow: Using operator '-' on a 4 byte value and then casting the result to a 8 byte value. Cast the value to the wider type before calling operator '-' to avoid overflow (io.2).</DESCRIPTION>
+    <FUNCTION>/=</FUNCTION>
+    <DECORATED>??_0@YA?AVBigIntValues@@AEAV0@AEBV0@@Z</DECORATED>
+    <FUNCLINE>427</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>D:\Forestry\CourseWork\C++\Kursova_Part1\Project1\Project1\</FILEPATH>
+      <FILENAME>BigIntValues.cpp</FILENAME>
+      <LINE>484</LINE>
+      <COLUMN>33</COLUMN>
+    </SFA>
+    <DEFECTCODE>26451</DEFECTCODE>
+    <DESCRIPTION>Arithmetic overflow: Using operator '-' on a 4 byte value and then casting the result to a 8 byte value. Cast the value to the wider type before calling operator '-' to avoid overflow (io.2).</DESCRIPTION>
+    <FUNCTION>/=</FUNCTION>
+    <DECORATED>??_0@YA?AVBigIntValues@@AEAV0@AEBV0@@Z</DECORATED>
+    <FUNCLINE>427</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>D:\Forestry\CourseWork\C++\Kursova_Part1\Project1\Project1\</FILEPATH>
+      <FILENAME>BigIntValues.cpp</FILENAME>
+      <LINE>539</LINE>
+      <COLUMN>33</COLUMN>
+    </SFA>
+    <DEFECTCODE>26451</DEFECTCODE>
+    <DESCRIPTION>Arithmetic overflow: Using operator '+' on a 4 byte value and then casting the result to a 8 byte value. Cast the value to the wider type before calling operator '+' to avoid overflow (io.2).</DESCRIPTION>
+    <FUNCTION>BigIntValues::=</FUNCTION>
+    <DECORATED>??4BigIntValues@@QEAAAEAV0@AEBV0@@Z</DECORATED>
+    <FUNCLINE>521</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+</DEFECTS>

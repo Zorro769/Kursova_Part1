@@ -2,14 +2,15 @@
 #include <string>
 #include<iostream>
 #include<fstream>
+#include<exception>
+#include"MyException.h"
+
 #pragma warning(disable : 4996)
+
 
 CharacterString::CharacterString()
 {
-	//pStrStart = new char[1];
-	//pStrStart[0] = '\0';
-	//maxLength = 0;
-	maxLength = 1;
+	maxLength = 256;
 	pStrStart = new char[maxLength] {'\0'};
 }
 CharacterString::CharacterString(int size)
@@ -19,11 +20,12 @@ CharacterString::CharacterString(int size)
 }
 CharacterString::~CharacterString()
 {
-	//delete[] pStrStart;
 }
 void CharacterString::setCharacter(char* value)
 {
-	pStrStart = new char[strlen(value) + 1];
+	if (strlen(value) < maxLength)
+		setLength(strlen(value));
+	pStrStart = new char[maxLength];
 	strcpy(pStrStart, value);
 }
 char* CharacterString::getCharacter()
@@ -32,7 +34,26 @@ char* CharacterString::getCharacter()
 }
 void CharacterString::setLength(int value)
 {
-	maxLength = value;
+	while (true)
+	{
+		try {
+
+			if (value == 0 || value < 0)
+			{
+				std::cin.clear();
+				std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+				throw MyException("Invalid input.Not integer number");
+			}
+			maxLength = value;
+			break;
+		}
+		catch (MyException& e) {
+			e.ShowException();
+			std::cerr << "Please,try again " << '\n';
+			std::cin >> value;
+		}
+	}
+	
 }
 int CharacterString::getCharacter(int index)
 {
@@ -49,77 +70,48 @@ CharacterString::CharacterString(const CharacterString& obj)
 	int i; 
 	maxLength = obj.maxLength;
 
-	pStrStart = new char[obj.maxLength];
+	pStrStart = new char[obj.maxLength + 1];
 
 	if (!pStrStart) 
 		exit(1);
 	for (i = 0; i < obj.maxLength; i++)
 		pStrStart[i] = obj.pStrStart[i];
+	pStrStart[maxLength] = '\0';
 }
-char* CharacterString::Append(char* array, size_t n, char a)
-{
-	size_t len = strlen(array);
-	char* ret;
-	if (len == 0)
-	{
-		ret = new char[len + n + 2];
-	}
-	else
-		ret = new char[len + n + 1];
 
-	for (int i = 0; i < len + n; i++)
+#pragma region CharMethods
+	/*char* CharacterString::Append(char* array, size_t n, char a)
 	{
-		if (i >= len)
+		size_t len = strlen(array);
+		char* ret;
+		if (len == 0)
 		{
-			ret[i] = (a);
+			ret = new char[len + n + 2];
 		}
 		else
+			ret = new char[len + n + 1];
+
+		for (int i = 0; i < len + n; i++)
 		{
-			ret[i] = array[i];
+			if (i >= len)
+			{
+				ret[i] = (a);
+			}
+			else
+			{
+				ret[i] = array[i];
+			}
 		}
-	}
 
-	ret[len + n] = '\0';
+		ret[len + n] = '\0';
+
+		delete[] array;
+		return ret;
+	}*/
 
 
-	return ret;
-}
-
-char* CharacterString::PopBack(char* array)
-{
-	size_t len = strlen(array);
-	char* ret = new char[len - 1];
-	for (int i = 0; i < len; i++)
-	{
-		ret[i] = array[i];
-	}
-	ret[len - 1] = '\0';
-	return ret;
-}
-
-char* CharacterString::Resize(char* array, size_t size)
-{
-	size_t len = strlen(array);
-	char* ret = new char[size];
-
-	for (int i = 0; i < size; i++)
-	{
-		ret[i] = array[i];
-	}
-	ret[size] = '\0';
-	return ret;
-}
-
-bool CharacterString::SubString(char* array_1, char array_2)
-{
-	for (int i = 0; i < strlen(array_1); i++)
-	{
-		if (array_1[i] == array_2)
-			return true;
-	}
-	return false;
-}
-
+#pragma endregion
+#pragma region ArithmeticOperators
 CharacterString CharacterString::operator+(CharacterString* obj)
 {
 		CharacterString temp;
@@ -199,6 +191,9 @@ bool operator*(CharacterString const& obj, CharacterString const& obj1)
 	}
 	return false;
 }
+#pragma endregion
+#pragma region IOoperators
+
 std::ostream& operator<<(std::ostream& os, const CharacterString& so)
 {
 	os << "Line: " << so.pStrStart << "\nMax Length: " << so.maxLength << std::endl;
@@ -217,4 +212,6 @@ std::istream& operator>>(std::istream& os, CharacterString& so)
 	so.setCharacter(str);
 	return os;
 }
+
+#pragma endregion
 

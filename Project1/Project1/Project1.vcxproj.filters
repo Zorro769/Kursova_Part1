@@ -21,6 +21,9 @@
     <ClInclude Include="BigIntValues.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="MyException.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CharacterString.cpp">
@@ -30,6 +33,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="BigIntValues.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MyException.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

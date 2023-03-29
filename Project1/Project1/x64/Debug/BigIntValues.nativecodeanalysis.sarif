@@ -1,0 +1,369 @@
+{
+  "version": "2.1.0",
+  "$schema": "https://schemastore.azurewebsites.net/schemas/json/sarif-2.1.0-rtm.5.json",
+  "runs": [
+    {
+      "results": [
+        {
+          "ruleId": "C26451",
+          "message": {
+            "text": "Arithmetic overflow: Using operator '+' on a 4 byte value and then casting the result to a 8 byte value. Cast the value to the wider type before calling operator '+' to avoid overflow (io.2)."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///D:/Forestry/CourseWork/C++/Kursova_Part1/Project1/Project1/BigIntValues.cpp"
+                },
+                "region": {
+                  "startLine": 32,
+                  "startColumn": 24,
+                  "endLine": 32,
+                  "endColumn": 24
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "BigIntValues::setCharacter",
+                  "decoratedName": "?setCharacter@BigIntValues@@QEAAXPEAD@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C26451",
+          "message": {
+            "text": "Arithmetic overflow: Using operator '-' on a 4 byte value and then casting the result to a 8 byte value. Cast the value to the wider type before calling operator '-' to avoid overflow (io.2)."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///D:/Forestry/CourseWork/C++/Kursova_Part1/Project1/Project1/BigIntValues.cpp"
+                },
+                "region": {
+                  "startLine": 104,
+                  "startColumn": 34,
+                  "endLine": 104,
+                  "endColumn": 38
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "BigIntValues::+",
+                  "decoratedName": "??HBigIntValues@@UEAA?AVCharacterString@@PEAV1@@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C26451",
+          "message": {
+            "text": "Arithmetic overflow: Using operator '-' on a 4 byte value and then casting the result to a 8 byte value. Cast the value to the wider type before calling operator '-' to avoid overflow (io.2)."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///D:/Forestry/CourseWork/C++/Kursova_Part1/Project1/Project1/BigIntValues.cpp"
+                },
+                "region": {
+                  "startLine": 240,
+                  "startColumn": 29,
+                  "endLine": 240,
+                  "endColumn": 33
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "+=",
+                  "decoratedName": "??Y@YA?AVBigIntValues@@AEAV0@AEBV0@@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C26451",
+          "message": {
+            "text": "Arithmetic overflow: Using operator '+' on a 4 byte value and then casting the result to a 8 byte value. Cast the value to the wider type before calling operator '+' to avoid overflow (io.2)."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///D:/Forestry/CourseWork/C++/Kursova_Part1/Project1/Project1/BigIntValues.cpp"
+                },
+                "region": {
+                  "startLine": 396,
+                  "startColumn": 24,
+                  "endLine": 396,
+                  "endColumn": 28
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "*=",
+                  "decoratedName": "??X@YA?AVBigIntValues@@AEAV0@AEBV0@@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C26451",
+          "message": {
+            "text": "Arithmetic overflow: Using operator '+' on a 4 byte value and then casting the result to a 8 byte value. Cast the value to the wider type before calling operator '+' to avoid overflow (io.2)."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///D:/Forestry/CourseWork/C++/Kursova_Part1/Project1/Project1/BigIntValues.cpp"
+                },
+                "region": {
+                  "startLine": 396,
+                  "startColumn": 24,
+                  "endLine": 396,
+                  "endColumn": 28
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "*=",
+                  "decoratedName": "??X@YA?AVBigIntValues@@AEAV0@AEBV0@@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C26451",
+          "message": {
+            "text": "Arithmetic overflow: Using operator '+' on a 4 byte value and then casting the result to a 8 byte value. Cast the value to the wider type before calling operator '+' to avoid overflow (io.2)."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///D:/Forestry/CourseWork/C++/Kursova_Part1/Project1/Project1/BigIntValues.cpp"
+                },
+                "region": {
+                  "startLine": 406,
+                  "startColumn": 25,
+                  "endLine": 406,
+                  "endColumn": 32
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "*=",
+                  "decoratedName": "??X@YA?AVBigIntValues@@AEAV0@AEBV0@@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C26451",
+          "message": {
+            "text": "Arithmetic overflow: Using operator '+' on a 4 byte value and then casting the result to a 8 byte value. Cast the value to the wider type before calling operator '+' to avoid overflow (io.2)."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///D:/Forestry/CourseWork/C++/Kursova_Part1/Project1/Project1/BigIntValues.cpp"
+                },
+                "region": {
+                  "startLine": 406,
+                  "startColumn": 25,
+                  "endLine": 406,
+                  "endColumn": 32
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "*=",
+                  "decoratedName": "??X@YA?AVBigIntValues@@AEAV0@AEBV0@@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C26451",
+          "message": {
+            "text": "Arithmetic overflow: Using operator '-' on a 4 byte value and then casting the result to a 8 byte value. Cast the value to the wider type before calling operator '-' to avoid overflow (io.2)."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///D:/Forestry/CourseWork/C++/Kursova_Part1/Project1/Project1/BigIntValues.cpp"
+                },
+                "region": {
+                  "startLine": 478,
+                  "startColumn": 30,
+                  "endLine": 478,
+                  "endColumn": 47
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "/=",
+                  "decoratedName": "??_0@YA?AVBigIntValues@@AEAV0@AEBV0@@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C26451",
+          "message": {
+            "text": "Arithmetic overflow: Using operator '-' on a 4 byte value and then casting the result to a 8 byte value. Cast the value to the wider type before calling operator '-' to avoid overflow (io.2)."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///D:/Forestry/CourseWork/C++/Kursova_Part1/Project1/Project1/BigIntValues.cpp"
+                },
+                "region": {
+                  "startLine": 480,
+                  "startColumn": 11,
+                  "endLine": 480,
+                  "endColumn": 28
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "/=",
+                  "decoratedName": "??_0@YA?AVBigIntValues@@AEAV0@AEBV0@@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C26451",
+          "message": {
+            "text": "Arithmetic overflow: Using operator '-' on a 4 byte value and then casting the result to a 8 byte value. Cast the value to the wider type before calling operator '-' to avoid overflow (io.2)."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///D:/Forestry/CourseWork/C++/Kursova_Part1/Project1/Project1/BigIntValues.cpp"
+                },
+                "region": {
+                  "startLine": 484,
+                  "startColumn": 19,
+                  "endLine": 484,
+                  "endColumn": 36
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "/=",
+                  "decoratedName": "??_0@YA?AVBigIntValues@@AEAV0@AEBV0@@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C26451",
+          "message": {
+            "text": "Arithmetic overflow: Using operator '+' on a 4 byte value and then casting the result to a 8 byte value. Cast the value to the wider type before calling operator '+' to avoid overflow (io.2)."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///D:/Forestry/CourseWork/C++/Kursova_Part1/Project1/Project1/BigIntValues.cpp"
+                },
+                "region": {
+                  "startLine": 539,
+                  "startColumn": 24,
+                  "endLine": 539,
+                  "endColumn": 24
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "BigIntValues::=",
+                  "decoratedName": "??4BigIntValues@@QEAAAEAV0@AEBV0@@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "tool": {
+        "driver": {
+          "name": "PREfast",
+          "fullName": "PREfast Code Analysis",
+          "version": "14.35.32216.1",
+          "informationUri": "https://aka.ms/cpp/ca"
+        }
+      },
+      "invocations": [
+        {
+          "executionSuccessful": true
+        }
+      ],
+      "artifacts": [
+        {
+          "location": {
+            "uri": "file:///D:/Forestry/CourseWork/C++/Kursova_Part1/Project1/Project1/BigIntValues.cpp"
+          },
+          "roles": [
+            "analysisTarget",
+            "resultFile"
+          ],
+          "hashes": {
+            "sha-256": "dfba4f698f2c50e6f88436cc1ab88745b32b183c3ee5c72302a95f7b6eb3607f"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///d:/forestry/coursework/c++/kursova_part1/project1/project1/bigintvalues.h"
+          },
+          "hashes": {
+            "sha-256": "9eef703685e23c3604e45d48a65d6604dc08d75ffb060dfcc4a0da5b3c74a135"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///d:/forestry/coursework/c++/kursova_part1/project1/project1/myexception.h"
+          },
+          "hashes": {
+            "sha-256": "5a05ddc8bfd3c2fa1a109c474065df59e36185b5f99b9a395f4e0da2607d66c6"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///d:/forestry/coursework/c++/kursova_part1/project1/project1/characterstring.h"
+          },
+          "hashes": {
+            "sha-256": "f8566c523f356ec9cf5e6c3c20c1c590eaa43d1f19a1fb9c544de52d6d99bbb3"
+          }
+        }
+      ]
+    }
+  ]
+}
