@@ -13,13 +13,13 @@ public:
 	char* PopBack(char* array);
 	char* Resize(char* array,size_t size);
 	bool SubString(char* array_1, char array_2);
-	void Appen(char*& str,char sym,size_t number);
+	//void Appen(char*& str,char sym,size_t number);
 	friend bool Null(const BigIntValues& a);
 
 	friend std::ostream& operator<<(std::ostream& os, const BigIntValues& so);
 	friend std::istream& operator>>(std::istream& os, BigIntValues& so);
 
-	virtual CharacterString operator+(CharacterString* a) override;
+	CharacterString operator+(CharacterString* a) override;
 	CharacterString operator-=(CharacterString* a);
 
 	friend BigIntValues operator+=(BigIntValues& a, const BigIntValues& b);

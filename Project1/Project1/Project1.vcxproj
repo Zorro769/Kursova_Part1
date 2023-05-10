@@ -131,15 +131,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="BigIntArray.h" />
     <ClInclude Include="BigIntValues.h" />
     <ClInclude Include="CharacterString.h" />
     <ClInclude Include="MyException.h" />
+    <ClInclude Include="MyIterator.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BigIntArray.cpp" />
     <ClCompile Include="BigIntValues.cpp" />
     <ClCompile Include="CharacterString.cpp" />
     <ClCompile Include="MainFilecpp.cpp" />
     <ClCompile Include="MyException.cpp" />
+    <ClCompile Include="MyIterator.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

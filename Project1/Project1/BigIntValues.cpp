@@ -26,13 +26,7 @@ using std::cout;
 				flag = true;
 			}
 			if (!isdigit(value[i]) && !flag) {
-				std::cout << ("NOT INTEGER NUMBER,TRY AGAIN\n");
-				std::cin.clear();
-				//std::cin.ignore();
-				std::cin.getline(value, maxLength);
-				i = ((maxLength - strlen(value)));
-				maxLength = strlen(value);
-
+				throw MyException("NOT INTEGER NUMBER");
 			}
 			else
 				pStrStart[maxLength - i - 1] = value[i];
@@ -117,7 +111,7 @@ using std::cout;
 			a->setCharacter(PopBack(a->getCharacter()));
 			pStrStart = PopBack(pStrStart);
 			*this = *this + a;
-			Appen(pStrStart, 1, '-');
+			pStrStart = Append(pStrStart, '-', 1);
 			if (pStrStart[strlen(pStrStart)] == '0')
 				pStrStart = PopBack(pStrStart);
 			a->setCharacter(this->pStrStart);
@@ -135,7 +129,7 @@ using std::cout;
 			}
 			else if (*this > a) {
 				*this -= a;
-				Appen(temp.pStrStart, 1, '-');
+				temp.pStrStart = Append(temp.pStrStart, '-', 1);
 				return *this;
 			}
 			else
@@ -152,7 +146,7 @@ using std::cout;
 
 		}
 		if (m > n) {
-			Appen(pStrStart, m - n, '0');
+			pStrStart = Append(pStrStart, '0', m - n);
 		}
 		n = strlen(pStrStart);
 		for (i = 0; i < n; i++) {
@@ -167,7 +161,7 @@ using std::cout;
 			pStrStart[i] = (number % 10) + '0';
 		}
 		if (t) {
-			Appen(pStrStart, 1, t + '0');
+			pStrStart = Append(pStrStart, t + '0', 1);
 		}
 		a->setCharacter(pStrStart);
 		return *a;
@@ -178,7 +172,7 @@ using std::cout;
 		bool flag = false;
 	
 		if (*this < a) {
-			Appen(pStrStart, 1, '0');
+			pStrStart = Append(pStrStart, '0', 1);
 			flag = true;
 		}
 		if (strlen(pStrStart) == 0)
@@ -217,25 +211,11 @@ using std::cout;
 			n--;
 		}
 		if (flag)
-			Appen(pStrStart, 1, '-');
+			pStrStart = Append(pStrStart, '-', 1);
 		a->setCharacter(pStrStart);
 		return *a;
 	}
 #pragma endregion
-	void BigIntValues::Appen(char*& str, char suffix, size_t number) {
-		if (!str || number == 0) {
-			return; 
-		}
-		size_t len = strlen(str);
-		char* temp = new char[len + number + 1];
-		strcpy(temp, str);
-		for (size_t i = 0; i < number; ++i) {
-			temp[len + i] = suffix;
-		}
-		temp[len + number] = '\0';
-		delete[] str;
-		str = temp;
-	}
 	BigIntValues operator+=(BigIntValues& a, const BigIntValues& b)
 	{
 		int divisor = 0, number = 0, i;
@@ -329,7 +309,7 @@ using std::cout;
 		{
 			a.pStrStart = a.PopBack(a.pStrStart);
 			a += b;
-			a.Appen(a.pStrStart, 1, '-');
+			a.pStrStart = a.Append(a.pStrStart, '-', 1);
 			return a;
 		}
 		else if (a.SubString(b.pStrStart, '-'))
@@ -403,7 +383,7 @@ using std::cout;
 		{
 			a.pStrStart = a.PopBack(a.pStrStart);
 			a *= b;
-			a.Appen(a.pStrStart, 1, '-');
+			a.pStrStart = a.Append(a.pStrStart, '-',1);
 			return a;
 		}
 		else if (a.SubString(b.pStrStart, '-'))
@@ -412,7 +392,7 @@ using std::cout;
 			temp = b;
 			temp.pStrStart = temp.PopBack(temp.pStrStart);
 			a *= temp;
-			a.Appen(a.pStrStart, 1, '-');
+			a.pStrStart = a.Append(a.pStrStart, '-',1);
 			return a;
 		}
 		int* array = new int[a.maxLength + b.maxLength]{ 0 };
@@ -436,8 +416,9 @@ using std::cout;
 		temp[a.maxLength] = '\0';
 		for (int i = a.maxLength - 1; i >= 1 && !array[i]; i--)
 			temp = a.PopBack(temp);
-		a.pStrStart = new char[size] {'\0'};
+		a.pStrStart = new char[strlen(temp)] {'\0'};
 		strcpy(a.pStrStart, temp);
+		a.setLength(strlen(a.pStrStart));
 		return a;
 	}
 	BigIntValues operator*(const BigIntValues& a, const BigIntValues& b) {
@@ -448,7 +429,7 @@ using std::cout;
 		BigIntValues operator/=(BigIntValues& a, const BigIntValues& b)
 		{
 			if (Null(b))
-				throw("Arithmetic Error: Division By 0");
+				throw MyException("Arithmetic Error: Division By 0");
 			if (a < b) {
 				a = BigIntValues();
 				return a;
@@ -471,7 +452,7 @@ using std::cout;
 			{
 				a.pStrStart = a.PopBack(a.pStrStart);
 				a /= b;
-				a.Appen(a.pStrStart, 1, '-');
+				a.pStrStart = a.Append(a.pStrStart, '-', 1);
 				return a;
 			}
 			else if (a.SubString(b.pStrStart, '-'))
@@ -480,7 +461,7 @@ using std::cout;
 				temp = b;
 				temp.pStrStart = temp.PopBack(temp.pStrStart);
 				a /= temp;
-				a.Appen(a.pStrStart, 1, '-');
+				a.pStrStart = a.Append(a.pStrStart, '-',1);
 				return a;
 			}
 			int i = 0;
@@ -522,7 +503,7 @@ using std::cout;
 	}
 	bool Null(const BigIntValues& a)
 	{
-		if (a.pStrStart[strlen(a.pStrStart)] == '0')
+		if (a.pStrStart[a.maxLength - 1] == '0')
 			return true;
 		return false;
 	}
@@ -609,12 +590,13 @@ using std::cout;
 
 	std::ostream& operator<<(std::ostream& os, const BigIntValues& so)
 	{
-		//std::cout << "Max length of string: \n";
-		//std::cout << so.maxLength << '\n';
-		//std::cout << "String: \n";
+		std::cout << "Max length of string: \n";
+		std::cout << so.maxLength << '\n';
+		std::cout << "String: \n";
 		for (int i = strlen(so.pStrStart) - 1; i >= 0; i--) {
 			os << so.pStrStart[i];
 		}
+		os << '\n';
 		return os;
 	}
 

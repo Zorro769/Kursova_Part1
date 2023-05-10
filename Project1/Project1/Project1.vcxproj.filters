@@ -24,6 +24,12 @@
     <ClInclude Include="MyException.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="BigIntArray.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MyIterator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CharacterString.cpp">
@@ -36,6 +42,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="MyException.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BigIntArray.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MyIterator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -34,31 +34,19 @@ char* CharacterString::getCharacter()
 }
 void CharacterString::setLength(int value)
 {
-	while (true)
+	if (value == 0 || value < 0 || value > 256)
 	{
-		try {
-
-			if (value == 0 || value < 0)
-			{
-				std::cin.clear();
-				std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-				throw MyException("Invalid input.Not integer number");
-			}
-			maxLength = value;
-			break;
-		}
-		catch (MyException& e) {
-			e.ShowException();
-			std::cerr << "Please,try again " << '\n';
-			std::cin >> value;
-		}
+		std::cin.clear();	
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		throw MyException("Invalid input.Not integer number");
 	}
+	maxLength = value;
 	
 }
 int CharacterString::getCharacter(int index)
 {
 	if (index < 0)
-		throw("ERROR");
+		throw MyException("ERROR");
 	return pStrStart[index];
 }
 int CharacterString::getLength()
@@ -79,94 +67,61 @@ CharacterString::CharacterString(const CharacterString& obj)
 	pStrStart[maxLength] = '\0';
 }
 
-#pragma region CharMethods
-	/*char* CharacterString::Append(char* array, size_t n, char a)
-	{
-		size_t len = strlen(array);
-		char* ret;
-		if (len == 0)
-		{
-			ret = new char[len + n + 2];
-		}
-		else
-			ret = new char[len + n + 1];
-
-		for (int i = 0; i < len + n; i++)
-		{
-			if (i >= len)
-			{
-				ret[i] = (a);
-			}
-			else
-			{
-				ret[i] = array[i];
-			}
-		}
-
-		ret[len + n] = '\0';
-
-		delete[] array;
-		return ret;
-	}*/
-
-
-#pragma endregion
 #pragma region ArithmeticOperators
 CharacterString CharacterString::operator+(CharacterString* obj)
 {
-		CharacterString temp;
-	temp.setCharacter(pStrStart);
-	strcat(temp.pStrStart, obj->pStrStart);
-	temp.setLength(strlen(temp.pStrStart) + 1);
-	temp.pStrStart[temp.maxLength] = '\0';
-	return temp;
-}
-CharacterString CharacterString::operator+(CharacterString& obj)
-{
 	CharacterString temp;
-	temp.setCharacter(pStrStart);
-	strcat(temp.pStrStart, obj.pStrStart);
-	temp.setLength(strlen(temp.pStrStart) + 1);
+	char* newStr = new char[maxLength + obj->maxLength];
+	strcpy(newStr, pStrStart);
+	strcat(newStr, obj->pStrStart);
+	temp.setCharacter(newStr);
+	temp.setLength(strlen(newStr)); 
 	temp.pStrStart[temp.maxLength] = '\0';
 	return temp;
 }
-CharacterString& CharacterString::operator-(CharacterString& obj)
+CharacterString CharacterString::operator-(const CharacterString& obj)const
 {
-	int length = strlen(pStrStart) - strlen(obj.pStrStart);
-	CharacterString res(strlen(pStrStart) - strlen(obj.pStrStart) - 4);
-	char* array = new char[length];
-	int j = 0, count = 0;
-	for (int i = 0; i < obj.maxLength + 1; i++)
+	int length = maxLength - obj.maxLength;
+	CharacterString res(length);
+	char* array = new char[length + 1];
+	int j = 0,i = 0, count = 0;
+	bool found = false;
+	while (i < maxLength)
 	{
-		if (pStrStart[i] == obj.pStrStart[j]) {
-			j++;
-			count++;
-		}
-	}
-	j = 0;
-		for (int i = 0; i < strlen(pStrStart) + 1; i++)
+		if (pStrStart[i] == obj.pStrStart[j])
 		{
-			if (count == strlen(obj.pStrStart))
+			j++;
+			if (j == obj.maxLength)
 			{
-				if (pStrStart[i] != obj.pStrStart[j])
-				{
-					array[i - j] = pStrStart[i];
-				}
-				else
-				{
-					j++;
-					continue;
-				}
+				found = true;
+				break;
 			}
-			else {
-				obj.pStrStart = pStrStart;
-				return obj;
-			}
-
 		}
-		obj.pStrStart = array;
-		obj.pStrStart[length] = '\0';
-		return obj;
+		else
+		{
+			j = 0;
+		}
+		i++;
+	}
+
+	if (!found)
+	{
+		throw MyException("THERE IS NO SUCH SUBSTRING IN MAIN STRING!");
+	}
+
+	for (int k = 0; k < i - obj.maxLength + 1; k++)
+	{
+		array[k] = pStrStart[k];
+	}
+
+	for (int k = i + 1; k < maxLength; k++)
+	{
+		array[k - obj.maxLength] = pStrStart[k];
+	}	
+	res.setCharacter(array);
+	res.setLength(length);
+	res.pStrStart[length] = '\0';
+	return res;
 }
 
 CharacterString CharacterString::operator=(CharacterString const& other)
@@ -175,6 +130,7 @@ CharacterString CharacterString::operator=(CharacterString const& other)
 		return *this;
 	setCharacter(other.pStrStart);
 	setLength(other.maxLength);
+	return *this;
 }
 bool operator*(CharacterString const& obj, CharacterString const& obj1)
 {
@@ -189,6 +145,8 @@ bool operator*(CharacterString const& obj, CharacterString const& obj1)
 		else
 			j = 0;
 	}
+	if (j == strlen(obj1.pStrStart))
+		return true;
 	return false;
 }
 #pragma endregion
